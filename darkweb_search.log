@@ -1,0 +1,109 @@
+# Logfile created on 2025-05-13 17:27:05 +0800 by logger.rb/v1.7.0
+[2025-05-13 17:27:37 +0800] INFO: Starting search with query: bitcoin AND market
+[2025-05-13 17:27:37 +0800] INFO: Starting Ahmia search for query: bitcoin AND market
+[2025-05-13 17:27:37 +0800] INFO: Starting DuckDuckGo search for query: bitcoin AND market
+[2025-05-13 17:27:37 +0800] INFO: Starting Haystack search for query: bitcoin AND market
+[2025-05-13 17:27:37 +0800] INFO: Starting Torch search for query: bitcoin AND market
+[2025-05-13 17:27:44 +0800] ERROR: Ahmia search failed: Failed to fetch results: Request to http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q=bitcoin+AND+market failed (net::ERR_PROXY_CONNECTION_FAILED)
+[2025-05-13 17:27:44 +0800] ERROR: Haystack search failed: Failed to fetch results: Request to http://haystak5njsmn2hqkewecpaxetahtwhsbsa64jom2k22z5afxhnpxfid.onion/search?q=bitcoin+AND+market failed (net::ERR_PROXY_CONNECTION_FAILED)
+[2025-05-13 17:27:44 +0800] ERROR: Torch search failed: Failed to fetch results: Request to http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/cgi-bin/omega/omega?P=bitcoin+AND+market&DEFAULTOP=and&DB=default&FMT=query&xDB=default&xFILTERS=.%7E%7E failed (net::ERR_PROXY_CONNECTION_FAILED)
+[2025-05-13 17:27:44 +0800] ERROR: DuckDuckGo search failed: Failed to fetch results: Request to https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/?q=bitcoin+AND+market failed (net::ERR_PROXY_CONNECTION_FAILED)
+[2025-05-13 17:28:28 +0800] INFO: Enabling Tor proxy
+[2025-05-13 17:29:10 +0800] ERROR: Failed to enable Tor proxy
+[2025-05-13 17:31:29 +0800] INFO: Enabling Tor proxy
+[2025-05-13 17:31:50 +0800] ERROR: Failed to enable Tor proxy
+[2025-05-13 17:35:16 +0800] INFO: Enabling Tor proxy
+[2025-05-13 17:35:34 +0800] ERROR: Failed to enable Tor proxy
+[2025-05-13 17:37:12 +0800] INFO: Enabling Tor proxy
+[2025-05-13 17:37:30 +0800] ERROR: Failed to enable Tor proxy
+[2025-05-13 17:42:06 +0800] INFO: Enabling Tor proxy
+[2025-05-13 17:42:09 +0800] INFO: Starting search with query: credit card
+[2025-05-13 17:42:09 +0800] INFO: Starting Ahmia search for query: credit card
+[2025-05-13 17:42:09 +0800] INFO: Starting DuckDuckGo search for query: credit card
+[2025-05-13 17:42:09 +0800] INFO: Starting Haystack search for query: credit card
+[2025-05-13 17:42:09 +0800] INFO: Starting Torch search for query: credit card
+[2025-05-13 17:42:19 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 17:42:21 +0800] ERROR: Torch search failed: Failed to fetch results: Request to http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/cgi-bin/omega/omega?P=credit+card&DEFAULTOP=and&DB=default&FMT=query&xDB=default&xFILTERS=.%7E%7E failed (net::ERR_EMPTY_RESPONSE)
+[2025-05-13 17:42:28 +0800] INFO: Found 0 results from DuckDuckGo
+[2025-05-13 17:42:40 +0800] INFO: Found 2791 results from Ahmia
+[2025-05-13 18:01:04 +0800] INFO: Enabling Tor proxy
+[2025-05-13 18:01:09 +0800] INFO: Starting search with query: credit card
+[2025-05-13 18:01:09 +0800] INFO: Starting Ahmia search for query: credit card
+[2025-05-13 18:01:09 +0800] INFO: Starting DuckDuckGo search for query: credit card
+[2025-05-13 18:01:09 +0800] INFO: Starting Haystack search for query: credit card
+[2025-05-13 18:01:09 +0800] INFO: Starting Torch search for query: credit card
+[2025-05-13 18:01:21 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 18:01:27 +0800] INFO: Found 2791 results from Ahmia
+[2025-05-13 18:01:39 +0800] ERROR: Torch search failed: Failed to fetch results: Request to http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/cgi-bin/omega/omega?P=credit+card&DEFAULTOP=and&DB=default&FMT=query&xDB=default&xFILTERS=.%7E%7E failed (net::ERR_EMPTY_RESPONSE)
+[2025-05-13 18:01:42 +0800] INFO: Found 0 results from DuckDuckGo
+[2025-05-13 18:03:01 +0800] INFO: Enabling Tor proxy
+[2025-05-13 18:03:04 +0800] INFO: Starting search with query: search term
+[2025-05-13 18:03:05 +0800] INFO: Starting Ahmia search for query: search term
+[2025-05-13 18:03:05 +0800] INFO: Starting DuckDuckGo search for query: search term
+[2025-05-13 18:03:05 +0800] INFO: Starting Haystack search for query: search term
+[2025-05-13 18:03:05 +0800] INFO: Starting Torch search for query: search term
+[2025-05-13 18:03:10 +0800] ERROR: Torch search failed: Failed to fetch results: Request to http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/cgi-bin/omega/omega?P=search+term&DEFAULTOP=and&DB=default&FMT=query&xDB=default&xFILTERS=.%7E%7E failed (net::ERR_EMPTY_RESPONSE)
+[2025-05-13 18:03:11 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 18:03:20 +0800] INFO: Found 0 results from DuckDuckGo
+[2025-05-13 18:03:27 +0800] INFO: Found 803 results from Ahmia
+[2025-05-13 18:04:25 +0800] INFO: Enabling Tor proxy
+[2025-05-13 18:05:03 +0800] INFO: Starting search with query: search term
+[2025-05-13 18:05:03 +0800] INFO: Starting Ahmia search for query: search term
+[2025-05-13 18:05:03 +0800] INFO: Starting DuckDuckGo search for query: search term
+[2025-05-13 18:05:03 +0800] INFO: Starting Haystack search for query: search term
+[2025-05-13 18:05:03 +0800] INFO: Starting Torch search for query: search term
+[2025-05-13 18:05:09 +0800] ERROR: Torch search failed: Failed to fetch results: Request to http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/cgi-bin/omega/omega?P=search+term&DEFAULTOP=and&DB=default&FMT=query&xDB=default&xFILTERS=.%7E%7E failed (net::ERR_EMPTY_RESPONSE)
+[2025-05-13 18:05:11 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 18:05:14 +0800] INFO: Found 803 results from Ahmia
+[2025-05-13 18:05:21 +0800] INFO: Found 0 results from DuckDuckGo
+[2025-05-13 18:06:42 +0800] INFO: Enabling Tor proxy
+[2025-05-13 18:06:45 +0800] INFO: Starting search with query: search term
+[2025-05-13 18:06:45 +0800] INFO: Starting Ahmia search for query: search term
+[2025-05-13 18:06:45 +0800] INFO: Starting DuckDuckGo search for query: search term
+[2025-05-13 18:06:45 +0800] INFO: Starting Haystack search for query: search term
+[2025-05-13 18:06:45 +0800] INFO: Starting Torch search for query: search term
+[2025-05-13 18:06:51 +0800] ERROR: Torch search failed: Failed to fetch results: Request to http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/cgi-bin/omega/omega?P=search+term&DEFAULTOP=and&DB=default&FMT=query&xDB=default&xFILTERS=.%7E%7E failed (net::ERR_EMPTY_RESPONSE)
+[2025-05-13 18:06:52 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 18:06:55 +0800] INFO: Found 803 results from Ahmia
+[2025-05-13 18:06:59 +0800] INFO: Found 0 results from DuckDuckGo
+[2025-05-13 18:58:01 +0800] INFO: Starting Ahmia search for query: test
+[2025-05-13 18:58:28 +0800] INFO: Found 865 results from Ahmia
+[2025-05-13 18:58:28 +0800] INFO: Starting Torch search for query: test
+[2025-05-13 18:58:38 +0800] ERROR: Torch search failed: Failed to fetch results: Request to http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/cgi-bin/omega/omega?P=test&DEFAULTOP=and&DB=default&FMT=query&xDB=default&xFILTERS=.%7E%7E failed (net::ERR_EMPTY_RESPONSE)
+[2025-05-13 18:58:38 +0800] INFO: Starting Haystack search for query: test
+[2025-05-13 18:58:46 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 18:58:47 +0800] INFO: Starting DuckDuckGo search for query: test
+[2025-05-13 18:59:02 +0800] INFO: Found 0 results from DuckDuckGo
+[2025-05-13 19:02:28 +0800] INFO: Starting Ahmia search for query: test
+[2025-05-13 19:02:36 +0800] INFO: Found 865 results from Ahmia
+[2025-05-13 19:02:36 +0800] INFO: Starting Torch search for query: test
+[2025-05-13 19:03:08 +0800] INFO: Found 79 results from Torch
+[2025-05-13 19:03:08 +0800] INFO: Starting Haystack search for query: test
+[2025-05-13 19:03:25 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 19:03:25 +0800] INFO: Starting DuckDuckGo search for query: test
+[2025-05-13 19:03:46 +0800] INFO: Found 1 results from DuckDuckGo
+[2025-05-13 21:26:38 +0800] INFO: Starting search with query: 
+[2025-05-13 21:26:38 +0800] INFO: Starting Ahmia search for query: 
+[2025-05-13 21:26:38 +0800] INFO: Starting DuckDuckGo search for query: 
+[2025-05-13 21:26:38 +0800] INFO: Starting Haystack search for query: 
+[2025-05-13 21:26:38 +0800] INFO: Starting Torch search for query: 
+[2025-05-13 21:28:21 +0800] INFO: Starting search with query: 
+[2025-05-13 21:28:21 +0800] INFO: Starting Ahmia search for query: 
+[2025-05-13 21:28:21 +0800] INFO: Starting DuckDuckGo search for query: 
+[2025-05-13 21:28:21 +0800] INFO: Starting Haystack search for query: 
+[2025-05-13 21:28:21 +0800] INFO: Starting Torch search for query: 
+[2025-05-13 21:28:30 +0800] INFO: Found 1579 results from Ahmia
+[2025-05-13 21:28:32 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 21:28:39 +0800] INFO: Found 1 results from DuckDuckGo
+[2025-05-13 21:29:30 +0800] INFO: Found 29 results from Torch
+[2025-05-13 21:34:58 +0800] INFO: Enabling Tor proxy
+[2025-05-13 21:35:00 +0800] INFO: Starting search with query: password AND gmail
+[2025-05-13 21:35:00 +0800] INFO: Starting Ahmia search for query: password AND gmail
+[2025-05-13 21:35:00 +0800] INFO: Starting DuckDuckGo search for query: password AND gmail
+[2025-05-13 21:35:00 +0800] INFO: Starting Haystack search for query: password AND gmail
+[2025-05-13 21:35:00 +0800] INFO: Starting Torch search for query: password AND gmail
+[2025-05-13 21:35:12 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 21:35:18 +0800] INFO: Found 1125 results from Ahmia
+[2025-05-13 21:35:35 +0800] ERROR: Failed to fetch results: Request to http://torchdeedp3i2jigzjdmfpn5ttjhthh5wbmda2rr3jvqjg5p77c54dqd.onion/search?query=password+AND+gmail&action=search failed (net::ERR_TIMED_OUT)
+[2025-05-13 21:35:35 +0800] ERROR: Torch search failed: Failed to fetch results: Request to http://torchdeedp3i2jigzjdmfpn5ttjhthh5wbmda2rr3jvqjg5p77c54dqd.onion/search?query=password+AND+gmail&action=search failed (net::ERR_TIMED_OUT)
+[2025-05-13 21:35:36 +0800] INFO: Found 1 results from DuckDuckGo

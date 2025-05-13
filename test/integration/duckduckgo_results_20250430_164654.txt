@@ -1,0 +1,6 @@
+DuckDuckGo Search Results
+Query: test query
+Timestamp: 2025-04-30 16:46:54 +0800
+--------------------------------------------------
+
+No results found.
