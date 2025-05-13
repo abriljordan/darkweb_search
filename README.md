@@ -1,4 +1,3 @@
-
 ## Project Development
 This project was developed using modern AI pair programming techniques, demonstrating:
 - Effective use of AI coding assistants
@@ -8,48 +7,66 @@ This project was developed using modern AI pair programming techniques, demonstr
 
 # 🔍 Dark Web Intelligence Tool (Collaborative AI Project)
 
-• Architected and implemented a Ruby-based OSINT tool using modern AI pair programming
-• Enhanced and debugged AI-generated code for Tor network integration
-• Demonstrated ability to work with and improve AI-generated solutions
-• Applied critical thinking to ensure secure and reliable implementation
+> Last Updated: May 2025
 
-## Features
+A sophisticated OSINT tool for dark web research, developed using modern AI pair programming techniques.
 
-- ✅ Boolean keyword search (AND, OR, exact phrases)
-- ✅ Supports dark web (.onion) search engines
-- ✅ Save results to TXT or CSV file
-- ✅ Modular engine support (easily add more)
-- ✅ Clean CLI interface with helpful guidance
+## 🌟 Key Highlights
 
-## Installation
+- 🤖 Developed using modern AI pair programming
+- 🔒 Security-focused implementation
+- 🧪 Thoroughly tested and optimized
+- 📚 Well-documented codebase
+
+## ✨ Features
+
+- 🔍 Advanced Boolean keyword search (AND, OR, exact phrases)
+- 🌐 Dark web (.onion) search engine integration
+- 💾 Export results to TXT or CSV formats
+- 🔌 Modular search engine architecture
+- 📊 Clean CLI interface with intuitive guidance
+- 🔐 Built-in Tor network integration
+
+## 🚀 Installation
 
 ```bash
+# Clone the repository
 git clone https://github.com/yourusername/darkweb_search.git
-cd darkweb-search-cli
+
+# Navigate to project directory
+cd darkweb_search
+
+# Install dependencies
 bundle install
+```
 
-Usage
+## 📖 Usage
 
-ruby darkweb_search.rb -q "bitcoin AND market" -e ahmia -o results.txt
-
-CLI Options
-
-Option	Description
--q	Query string (Boolean logic supported)
--e	Search engine (ahmia, torch, haystak, all)
--o	Output file path
--t	Route via Tor (optional, required for .onion engines)
--h, --help	Display usage instructions
-
-Requirements
-	•	Ruby 3.x
-	•	Bundler (gem install bundler)
-	•	Tor service (optional, for .onion engines)
-	•	curl
-
-Project Structure
-
+Basic usage example:
 ```bash
+ruby darkweb_search.rb -q "bitcoin AND market" -e ahmia -o results.txt
+```
+
+### CLI Options
+
+| Option | Description |
+|--------|-------------|
+| `-q` | Query string (Boolean logic supported) |
+| `-e` | Search engine (ahmia, torch, haystak, all) |
+| `-o` | Output file path |
+| `-t` | Route via Tor (required for .onion engines) |
+| `-h` | Display help information |
+
+## 🔧 Requirements
+
+- Ruby 3.x or higher
+- Bundler (`gem install bundler`)
+- Tor service (for .onion access)
+- curl
+
+## 📁 Project Structure
+
+```
 darkweb_search/
 ├── Gemfile
 ├── Gemfile.lock
@@ -65,36 +82,34 @@ darkweb_search/
 │   │   ├── haystack.rb
 │   │   └── torch.rb
 │   └── tor_manager.rb
-├── results.txt
 └── test/
     ├── integration/
-    │   ├── search_test.rb
-    │   └── [various test result files]
     └── lib/
-        ├── cli_parser_test.rb
-        ├── search_engines/
-        └── tor_manager_test.rb
 ```
 
-Example Searches
-	•	Search Ahmia for “bitcoin AND market”:
+## 📝 Example Searches
 
+Search Ahmia engine:
+```bash
 ruby darkweb_search.rb -q "bitcoin AND market" -e ahmia
+```
 
-
-	•	Search all engines via Tor and save to file:
-
+Search all engines via Tor:
+```bash
 ruby darkweb_search.rb -q "gmail AND password" -e all -t -o results.txt
+```
 
-
-
-Disclaimer
+## ⚠️ Disclaimer
 
 ⚠️ For educational and ethical research only. Ensure compliance with applicable laws in your country.
 
-Credits
+## 👤 Author
 
 Created by Abril Jordan Casinillo
-Developed during cybersecurity R&D and some serious late-night “vibe coding” sessions.
 
-⸻
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+Made with ❤️ and ☕
