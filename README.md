@@ -6,7 +6,7 @@ This project was developed using modern AI pair programming techniques, demonstr
 - Security-focused implementation
 - Debugging and optimization
 
-# 🔍 DDark Web Intelligence Tool (Collaborative AI Project)
+# 🔍 Dark Web Intelligence Tool (Collaborative AI Project)
 
 • Architected and implemented a Ruby-based OSINT tool using modern AI pair programming
 • Enhanced and debugged AI-generated code for Tor network integration
