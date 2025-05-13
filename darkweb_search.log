@@ -107,3 +107,50 @@
 [2025-05-13 21:35:35 +0800] ERROR: Failed to fetch results: Request to http://torchdeedp3i2jigzjdmfpn5ttjhthh5wbmda2rr3jvqjg5p77c54dqd.onion/search?query=password+AND+gmail&action=search failed (net::ERR_TIMED_OUT)
 [2025-05-13 21:35:35 +0800] ERROR: Torch search failed: Failed to fetch results: Request to http://torchdeedp3i2jigzjdmfpn5ttjhthh5wbmda2rr3jvqjg5p77c54dqd.onion/search?query=password+AND+gmail&action=search failed (net::ERR_TIMED_OUT)
 [2025-05-13 21:35:36 +0800] INFO: Found 1 results from DuckDuckGo
+[2025-05-13 21:46:49 +0800] INFO: Starting search with query: bitcoin AND market
+[2025-05-13 21:46:49 +0800] INFO: Starting Ahmia search for query: bitcoin AND market
+[2025-05-13 21:46:49 +0800] INFO: Starting DuckDuckGo search for query: bitcoin AND market
+[2025-05-13 21:46:49 +0800] INFO: Starting Haystack search for query: bitcoin AND market
+[2025-05-13 21:46:49 +0800] INFO: Starting Torch search for query: bitcoin AND market
+[2025-05-13 21:47:04 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 21:47:19 +0800] INFO: Found 9 results from DuckDuckGo
+[2025-05-13 21:47:25 +0800] INFO: Found 1566 results from Ahmia
+[2025-05-13 21:47:25 +0800] INFO: Found 81 results from Torch
+[2025-05-13 21:50:52 +0800] INFO: Starting search with query: bitcoin AND market
+[2025-05-13 21:50:52 +0800] INFO: Starting Ahmia search for query: bitcoin AND market
+[2025-05-13 21:50:52 +0800] INFO: Starting DuckDuckGo search for query: bitcoin AND market
+[2025-05-13 21:50:52 +0800] INFO: Starting Haystack search for query: bitcoin AND market
+[2025-05-13 21:50:52 +0800] INFO: Starting Torch search for query: bitcoin AND market
+[2025-05-13 21:51:05 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 21:51:08 +0800] INFO: Found 1566 results from Ahmia
+[2025-05-13 21:51:20 +0800] INFO: Found 81 results from Torch
+[2025-05-13 21:51:31 +0800] INFO: Found 1 results from DuckDuckGo
+[2025-05-13 21:54:40 +0800] INFO: Starting search with query: bitcoin AND market
+[2025-05-13 21:54:40 +0800] INFO: Starting Ahmia search for query: bitcoin AND market
+[2025-05-13 21:54:50 +0800] INFO: Found 1566 results from Ahmia
+[2025-05-13 21:57:30 +0800] INFO: Starting search with query: test query
+[2025-05-13 21:57:30 +0800] INFO: Starting Ahmia search for query: test query
+[2025-05-13 21:57:52 +0800] INFO: Found 1202 results from Ahmia
+[2025-05-13 21:57:52 +0800] INFO: Starting search with query: test query
+[2025-05-13 21:57:52 +0800] INFO: Starting Ahmia search for query: test query
+[2025-05-13 21:57:52 +0800] INFO: Starting Torch search for query: test query
+[2025-05-13 21:58:02 +0800] INFO: Found 1202 results from Ahmia
+[2025-05-13 21:58:57 +0800] INFO: Found 30 results from Torch
+[2025-05-13 21:58:57 +0800] INFO: Enabling Tor proxy
+[2025-05-13 21:59:02 +0800] INFO: Starting search with query: test query
+[2025-05-13 21:59:02 +0800] INFO: Starting Ahmia search for query: test query
+[2025-05-13 21:59:09 +0800] INFO: Found 1202 results from Ahmia
+[2025-05-13 21:59:10 +0800] INFO: Starting search with query: test query
+[2025-05-13 21:59:10 +0800] INFO: Starting Ahmia search for query: test query
+[2025-05-13 21:59:19 +0800] INFO: Found 1202 results from Ahmia
+[2025-05-13 21:59:22 +0800] INFO: Starting Ahmia search for query: test query
+[2025-05-13 21:59:32 +0800] INFO: Found 1202 results from Ahmia
+[2025-05-13 21:59:32 +0800] INFO: Starting Torch search for query: test query
+[2025-05-13 22:00:20 +0800] INFO: Found 30 results from Torch
+[2025-05-13 22:00:21 +0800] INFO: Starting Haystack search for query: test query
+[2025-05-13 22:00:34 +0800] INFO: Found 0 results from Haystack
+[2025-05-13 22:00:34 +0800] INFO: Starting DuckDuckGo search for query: test query
+[2025-05-13 22:01:04 +0800] INFO: Found 10 results from DuckDuckGo
+[2025-05-13 22:01:04 +0800] INFO: Starting search with query: test query
+[2025-05-13 22:01:04 +0800] INFO: Starting Ahmia search for query: test query
+[2025-05-13 22:01:10 +0800] INFO: Found 1202 results from Ahmia

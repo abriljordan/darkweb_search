@@ -200,7 +200,7 @@ module DarkWebSearch
     end
 
     def perform_search
-      engines = SearchEngines::Factory.create_enabled_engines
+      engines = SearchEngines::Factory.create_engines(@options[:engines])
       @logger.info("Starting search with query: #{@options[:query]}")
       
       if Config.settings[:search][:concurrent]
