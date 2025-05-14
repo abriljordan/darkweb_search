@@ -1,0 +1,64 @@
+# Logfile created on 2025-05-14 17:42:55 +0800 by logger.rb/v1.7.0
+[2025-05-14 17:42:55 +0800] INFO: Dark Web Search initialized with 2 engines
+[2025-05-14 17:42:55 +0800] INFO: Dark Web Search initialized with 2 engines
+[2025-05-14 17:42:55 +0800] INFO: Dark Web Search initialized with 2 engines
+[2025-05-14 17:42:55 +0800] INFO: Testing Tor connection...
+[2025-05-14 17:42:55 +0800] INFO: Tor connection successful
+[2025-05-14 17:42:55 +0800] INFO: Starting search with query: test AND query
+[2025-05-14 17:42:55 +0800] INFO: Starting Ahmia search for query: test AND query
+[2025-05-14 17:42:55 +0800] INFO: Starting Torch search for query: test AND query
+[2025-05-14 17:42:55 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:42:57 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:43:01 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:43:06 +0800] INFO: Found 50 results from Torch
+[2025-05-14 17:43:07 +0800] INFO: Found 100 results from Ahmia
+[2025-05-14 17:43:07 +0800] INFO: Search completed. Found 150 total unique results
+[2025-05-14 17:43:07 +0800] INFO: Dark Web Search initialized with 2 engines
+[2025-05-14 17:43:07 +0800] INFO: Dark Web Search initialized with 2 engines
+[2025-05-14 17:43:07 +0800] INFO: Starting Ahmia search for query: test AND query
+[2025-05-14 17:43:11 +0800] INFO: Found 100 results from Ahmia
+[2025-05-14 17:43:11 +0800] INFO: Starting Torch search for query: test AND query
+[2025-05-14 17:43:11 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:43:13 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:43:17 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:43:22 +0800] INFO: Found 50 results from Torch
+[2025-05-14 17:43:22 +0800] INFO: Dark Web Search initialized with 2 engines
+[2025-05-14 17:43:22 +0800] INFO: Testing Tor connection...
+[2025-05-14 17:43:22 +0800] INFO: Tor connection successful
+[2025-05-14 17:43:22 +0800] INFO: Starting search with query: test AND query
+[2025-05-14 17:43:22 +0800] INFO: Starting Ahmia search for query: test AND query
+[2025-05-14 17:43:22 +0800] INFO: Starting Torch search for query: test AND query
+[2025-05-14 17:43:22 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:43:24 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:43:25 +0800] INFO: Found 100 results from Ahmia
+[2025-05-14 17:43:28 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:43:32 +0800] INFO: Found 50 results from Torch
+[2025-05-14 17:43:32 +0800] INFO: Search completed. Found 150 total unique results
+[2025-05-14 17:43:32 +0800] INFO: Testing Tor connection...
+[2025-05-14 17:43:32 +0800] INFO: Tor connection successful
+[2025-05-14 17:43:32 +0800] INFO: Starting search with query: bitcoin AND wallet
+[2025-05-14 17:43:32 +0800] INFO: Starting Ahmia search for query: bitcoin AND wallet
+[2025-05-14 17:43:32 +0800] INFO: Starting Torch search for query: bitcoin AND wallet
+[2025-05-14 17:43:35 +0800] INFO: Found 47 results from Torch
+[2025-05-14 17:43:53 +0800] INFO: Found 100 results from Ahmia
+[2025-05-14 17:43:53 +0800] INFO: Search completed. Found 147 total unique results
+[2025-05-14 17:43:53 +0800] INFO: Testing Tor connection...
+[2025-05-14 17:43:53 +0800] INFO: Tor connection successful
+[2025-05-14 17:43:53 +0800] INFO: Starting search with query: password manager
+[2025-05-14 17:43:53 +0800] INFO: Starting Ahmia search for query: password manager
+[2025-05-14 17:43:53 +0800] INFO: Starting Torch search for query: password manager
+[2025-05-14 17:43:56 +0800] INFO: Found 19 results from Torch
+[2025-05-14 17:44:00 +0800] INFO: Found 6 results from Ahmia
+[2025-05-14 17:44:00 +0800] INFO: Search completed. Found 25 total unique results
+[2025-05-14 17:44:00 +0800] INFO: Dark Web Search initialized with 2 engines
+[2025-05-14 17:44:00 +0800] INFO: Testing Tor connection...
+[2025-05-14 17:44:00 +0800] INFO: Tor connection successful
+[2025-05-14 17:44:00 +0800] INFO: Starting search with query: test AND query
+[2025-05-14 17:44:00 +0800] INFO: Starting Ahmia search for query: test AND query
+[2025-05-14 17:44:00 +0800] INFO: Starting Torch search for query: test AND query
+[2025-05-14 17:44:00 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:44:02 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:44:03 +0800] INFO: Found 100 results from Ahmia
+[2025-05-14 17:44:06 +0800] ERROR: Unexpected error: Failed to open TCP connection to torch5uv3oqm2pdk.onion:80 (general SOCKS server failure)
+[2025-05-14 17:44:09 +0800] INFO: Found 50 results from Torch
+[2025-05-14 17:44:09 +0800] INFO: Search completed. Found 150 total unique results
