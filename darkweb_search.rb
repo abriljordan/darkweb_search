@@ -1,54 +1,78 @@
 #!/usr/bin/env ruby
 
 require_relative 'lib/config'
-require_relative 'lib/cli_parser'
-require_relative 'lib/tor_manager'
-require_relative 'lib/search_engines/factory'
-require 'concurrent'
+require_relative 'lib/search_engines/ahmia'
+require_relative 'lib/search_engines/torch'
+require 'logger'
+require 'set'
+require 'fileutils'
+require 'optparse'
 
 module DarkWebSearch
-  class Application
+  class SearchResult
+    attr_reader :url, :title, :description, :engine
+    
+    def initialize(url:, title:, description: nil, engine:)
+      @url = url
+      @title = title
+      @description = description
+      @engine = engine
+    end
+  end
+
+  class DarkWebSearch
     def initialize
-      Config.load
+      Config.load # Initialize config with defaults
       @logger = Config.logger
-      @options = {}
-      if ARGV.empty?
-        show_main_menu
-      else
-        @options = CLIParser.parse(ARGV)
-      end
-      exit if @options.empty?
+      @options = {
+        query: nil,
+        output: nil,
+        tor: true
+      }
+      
+      # Initialize only working search engines
+      @search_engines = [
+        SearchEngines::AhmiaSearchEngine.new,
+        SearchEngines::TorchSearchEngine.new
+      ]
+      
+      @logger.info("Dark Web Search initialized with #{@search_engines.size} engines")
     end
 
-    def show_main_menu
+    def run_interactive
       loop do
         clear_screen
         show_banner
         show_current_config
         show_menu_options
         
-        choice = get_user_input("\nSelect an option (0-7): ")
+        print "\nSelect an option (0-7): "
+        choice = gets.chomp
         
         case choice
-        when "1"
-          set_search_query
-        when "2"
-          select_search_engines
-        when "3"
-          toggle_tor
-        when "4"
-          set_output_file
-        when "5"
-          show_help
-        when "6"
-          if validate_config
-            break # Exit menu and start search
-          end
-        when "7"
-          show_about
-        when "0"
+        when '0'
           puts "\nExiting..."
-          exit
+          break
+        when '1'
+          set_search_query
+        when '2'
+          select_search_engines
+        when '3'
+          toggle_tor
+        when '4'
+          set_output_file
+        when '5'
+          show_help
+        when '6'
+          if validate_config
+            results = perform_search
+            display_results(results)
+            save_results(results) if @options[:output]
+            puts "\nPress Enter to continue..."
+            gets
+          end
+        when '7'
+          show_about
         else
           puts "\nInvalid option. Press Enter to continue..."
           gets
@@ -56,17 +80,19 @@ module DarkWebSearch
       end
     end
 
-    def run
-      setup_environment
-      results = perform_search
-      display_results(results)
-      save_results(results) if @options[:output]
-    rescue => e
-      @logger.error("Application error: #{e.message}")
-      puts "[!] Error: #{e.message}"
-      exit 1
-    ensure
-      cleanup
+    def run(query, options)
+      return false if query.nil? || query.empty?
+      
+      @options[:query] = query
+      if test_tor_connection
+        results = perform_search
+        display_results(results)
+        save_results(results, options[:output]) if options[:output]
+        true
+      else
+        puts "[!] Error: Could not connect to Tor. Please ensure Tor is running."
+        false
+      end
     end
 
     private
@@ -76,8 +102,8 @@ module DarkWebSearch
     end
 
     def show_banner
-      puts CLIParser.show_banner
-      puts "\n=== Dark Web Search Tool ==="
+      puts "Dark Web Search Tool"
+      puts "---------------------"
       puts "A terminal-based dark web search utility"
       puts "=" * 35 + "\n\n"
     end
@@ -86,7 +112,6 @@ module DarkWebSearch
       puts "Current Configuration:"
       puts "---------------------"
       puts "Search Query: #{@options[:query] || 'Not set'}"
-      puts "Search Engines: #{@options[:engines]&.join(', ') || 'Not set'}"
       puts "Use Tor: #{@options[:tor] ? 'Yes' : 'No'}"
       puts "Output File: #{@options[:output] || 'Not set'}"
       puts "\n"
@@ -106,7 +131,8 @@ module DarkWebSearch
     end
 
     def set_search_query
-      query = get_user_input("\nEnter search query: ")
+      print "\nEnter search query: "
+      query = gets.chomp
       @options[:query] = query unless query.empty?
     end
 
@@ -114,21 +140,12 @@ module DarkWebSearch
       clear_screen
       puts "\nAvailable Search Engines:"
       puts "----------------------"
-      
-      CLIParser::AVAILABLE_ENGINES.each_with_index do |(key, desc), index|
-        puts "#{index + 1}. #{key.ljust(12)} - #{desc}"
+      @search_engines.each_with_index do |engine, index|
+        puts "#{index + 1}. #{engine.class.name.split('::').last}"
       end
-
-      puts "\nEnter engine numbers (comma-separated) or 'all'"
-      print "Selection: "
-      input = gets.chomp.downcase
-
-      if input == 'all'
-        @options[:engines] = CLIParser::AVAILABLE_ENGINES.keys
-      else
-        selected = input.split(',').map(&:strip).map(&:to_i)
-        @options[:engines] = selected.map { |i| CLIParser::AVAILABLE_ENGINES.keys[i - 1] }.compact
-      end
+      puts "\nNote: Currently using all available engines"
+      puts "Press Enter to continue..."
+      gets
     end
 
     def toggle_tor
@@ -138,7 +155,8 @@ module DarkWebSearch
     end
 
     def set_output_file
-      filename = get_user_input("\nEnter output filename (or Enter to skip): ")
+      print "\nEnter output filename (or Enter to skip): "
+      filename = gets.chomp
       if filename.empty?
         @options.delete(:output)
       else
@@ -148,7 +166,14 @@ module DarkWebSearch
 
     def show_help
       clear_screen
-      puts CLIParser.show_help
+      puts "Dark Web Search Tool Help"
+      puts "-------------------------"
+      puts "A terminal-based utility for searching the dark web"
+      puts "Supports multiple search engines and Tor routing"
+      puts "\nSupported Search Engines:"
+      @search_engines.each do |engine|
+        puts "- #{engine.class.name.split('::').last}"
+      end
       puts "\nPress Enter to continue..."
       gets
     end
@@ -159,10 +184,6 @@ module DarkWebSearch
       puts "-------------------------"
       puts "A terminal-based utility for searching the dark web"
       puts "Supports multiple search engines and Tor routing"
-      puts "\nSupported Search Engines:"
-      CLIParser::AVAILABLE_ENGINES.each do |key, desc|
-        puts "- #{key}: #{desc}"
-      end
       puts "\nPress Enter to continue..."
       gets
     end
@@ -174,45 +195,15 @@ module DarkWebSearch
         gets
         return false
       end
-
-      if @options[:engines].nil? || @options[:engines].empty?
-        @options[:engines] = ['ahmia'] # Set default engine
-      end
-
       true
     end
 
-    def get_user_input(prompt)
-      print prompt
-      gets.chomp
-    end
-
-    def setup_environment
-      if @options[:tor]
-        @logger.info("Enabling Tor proxy")
-        unless TorManager.enable_tor_proxy
-          @logger.error("Failed to enable Tor proxy")
-          exit 1
-        end
-      end
-
-      FileUtils.mkdir_p(Config.settings[:results_dir])
-    end
-
     def perform_search
-      engines = SearchEngines::Factory.create_engines(@options[:engines])
       @logger.info("Starting search with query: #{@options[:query]}")
       
-      if Config.settings[:search][:concurrent]
-        search_concurrent(engines)
-      else
-        search_sequential(engines)
-      end
-    end
-
-    def search_concurrent(engines)
-      futures = engines.map do |engine|
-        Concurrent::Future.execute do
+      # Run searches in parallel for better performance
+      threads = @search_engines.map do |engine|
+        Thread.new do
           begin
             engine.search(@options[:query])
           rescue => e
@@ -222,65 +213,207 @@ module DarkWebSearch
         end
       end
 
-      # Wait for all searches to complete and combine results
-      futures.map(&:value).reduce(Set.new, :merge)
-    end
-
-    def search_sequential(engines)
-      engines.reduce(Set.new) do |results, engine|
-        begin
-          results.merge(engine.search(@options[:query]))
-        rescue => e
-          @logger.error("Search failed for #{engine.class}: #{e.message}")
-          results
-        end
-      end
+      # Combine results from all engines, removing duplicates
+      results = threads.map(&:value).reduce(Set.new, :merge)
+      
+      @logger.info("Search completed. Found #{results.size} total unique results")
+      results.to_a
     end
 
     def display_results(results)
       if results.empty?
-        puts "[-] No results found."
+        puts "\nNo results found."
       else
-        puts "[✓] Found #{results.size} unique result(s)."
+        puts "\nFound #{results.size} unique results:"
+        puts "=" * 80
+        
         results.each_with_index do |result, i|
-          puts "\n#{i + 1}. #{result.title || result.url}"
-          puts "   URL: #{result.url}"
-          puts "   Engine: #{result.engine}"
-          puts "   Description: #{result.description}" if result.description
+          puts "\n[#{i + 1}] #{clean_text(result.title)}"
+          puts "    URL: #{result.url}"
+          if result.description
+            # Word wrap description at 76 chars for readability
+            description = clean_text(result.description)
+            description = description.gsub(/(.{1,76})(\s+|$)/, "    \\1\n").strip
+            puts "    Description:\n#{description}"
+          end
+          puts "    Source: #{result.engine.capitalize}"
+          puts "-" * 80
         end
       end
     end
 
-    def save_results(results)
-      output_file = File.join(Config.settings[:results_dir], @options[:output])
+    def save_results(results, output_file)
+      FileUtils.mkdir_p('results')
+      output_file ||= "results_#{Time.now.strftime('%Y%m%d_%H%M%S')}.txt"
+      output_file = File.join('results', output_file)
       
-      File.open(output_file, 'w') do |f|
+      File.open(output_file, 'w:UTF-8') do |f|
         f.puts "Dark Web Search Results"
         f.puts "Query: #{@options[:query]}"
         f.puts "Timestamp: #{Time.now}"
         f.puts "Total Results: #{results.size}"
-        f.puts "-" * 50
+        f.puts "=" * 80
         f.puts
 
         results.each_with_index do |result, i|
-          f.puts "#{i + 1}. #{result.title || result.url}"
+          f.puts "[#{i + 1}] #{clean_text(result.title)}"
           f.puts "URL: #{result.url}"
-          f.puts "Engine: #{result.engine}"
-          f.puts "Description: #{result.description}" if result.description
-          f.puts "-" * 30
+          if result.description
+            f.puts "Description:"
+            # Word wrap description at 76 chars for readability
+            description = clean_text(result.description)
+            description = description.gsub(/(.{1,76})(\s+|$)/, "\\1\n").strip
+            f.puts description
+          end
+          f.puts "Source: #{result.engine.capitalize}"
+          f.puts "-" * 80
           f.puts
         end
       end
 
-      puts "[✓] Results saved to #{output_file}"
+      puts "\n[✓] Results saved to: #{output_file}"
     end
 
-    def cleanup
-      TorManager.disable_tor if @options[:tor]
+    def test_tor_connection
+      @logger.info("Testing Tor connection...")
+      begin
+        require 'socket'
+        TCPSocket.new('127.0.0.1', 9050).close
+        @logger.info("Tor connection successful")
+        true
+      rescue => e
+        @logger.error("Tor connection failed: #{e.message}")
+        false
+      end
+    end
+
+    private
+
+    def clean_text(text)
+      return "" unless text
+      
+      # Convert to UTF-8 if not already
+      text = text.encode('UTF-8', invalid: :replace, undef: :replace, replace: '')
+      
+      # Replace common HTML entities
+      text = text.gsub(/&amp;/, '&')
+                .gsub(/&lt;/, '<')
+                .gsub(/&gt;/, '>')
+                .gsub(/&quot;/, '"')
+                .gsub(/&#39;/, "'")
+                .gsub(/&ndash;/, '–')
+                .gsub(/&mdash;/, '—')
+                .gsub(/&nbsp;/, ' ')
+      
+      # Replace or remove problematic characters
+      text = text.gsub(/[\u0080-\u009F]/, '') # Remove control characters
+                .gsub(/[^\p{Print}\s]/, '')    # Remove non-printable characters
+                .gsub(/\s+/, ' ')              # Normalize whitespace
+                .strip
+      
+      # Handle common encoding issues
+      text = text.gsub(/â\u0080\u0099/, "'")  # Smart quotes
+                .gsub(/â\u0080\u009C/, '"')    # Left double quote
+                .gsub(/â\u0080\u009D/, '"')    # Right double quote
+                .gsub(/â\u0080\u0093/, '–')    # En dash
+                .gsub(/â\u0080\u0094/, '—')    # Em dash
+                .gsub(/â\u0080¦/, '...')       # Ellipsis
+                .gsub(/Â/, '')                 # Non-breaking space artifact
+      
+      text
     end
   end
 end
 
-if __FILE__ == $0
-  DarkWebSearch::Application.new.run
+# Only run this code if the script is run directly
+if $0 == __FILE__
+  search = DarkWebSearch::DarkWebSearch.new
+  
+  if ARGV.empty? || ARGV[0] == '-h' || ARGV[0] == '--help'
+    puts <<~HELP
+      Dark Web Search Tool - Search the dark web safely through Tor
+
+      Usage:
+        #{File.basename($0)} [options] <search query>
+        #{File.basename($0)} -i  # Interactive mode
+
+      Options:
+        -h, --help     Show this help message
+        -i            Interactive mode (menu-driven interface)
+        -o FILE       Save results to FILE (default: results_TIMESTAMP.txt)
+        -v            Verbose output (shows debug information)
+        -q            Quiet mode (only shows results)
+
+      Examples:
+        #{File.basename($0)} "bitcoin wallet"
+        #{File.basename($0)} -o results.txt "password manager"
+        #{File.basename($0)} -i  # Start in interactive mode
+
+      Notes:
+        - Requires Tor to be running (default: localhost:9050)
+        - Searches multiple dark web search engines
+        - Results are automatically saved to the results/ directory
+        - Use quotes for queries with spaces
+        - Use AND, OR, NOT for boolean queries (e.g., "bitcoin AND wallet")
+
+      Safety Warning:
+        This tool helps you search the dark web safely, but exercise caution:
+        - Never download files from .onion sites
+        - Never enter credentials on .onion sites
+        - Use Tor Browser for actually visiting any sites
+    HELP
+    exit 0
+  end
+
+  # Parse command line options
+  require 'optparse'
+  options = { verbose: false, quiet: false }
+  
+  parser = OptionParser.new do |opts|
+    opts.banner = "Usage: #{File.basename($0)} [options] <search query>"
+    
+    opts.on('-i', '--interactive', 'Interactive mode') do
+      options[:interactive] = true
+    end
+    
+    opts.on('-o', '--output FILE', 'Save results to FILE') do |file|
+      options[:output] = file
+    end
+    
+    opts.on('-v', '--verbose', 'Verbose output') do
+      options[:verbose] = true
+    end
+    
+    opts.on('-q', '--quiet', 'Quiet mode') do
+      options[:quiet] = true
+    end
+  end
+
+  begin
+    parser.parse!
+    
+    if options[:interactive]
+      search.run_interactive
+    else
+      if ARGV.empty?
+        puts "Error: Please provide a search query or use -i for interactive mode"
+        puts "Use --help for usage information"
+        exit 1
+      end
+      
+      query = ARGV.join(' ')
+      search.run(query, options)
+    end
+  rescue OptionParser::InvalidOption => e
+    puts "Error: #{e.message}"
+    puts "Use --help for usage information"
+    exit 1
+  rescue Interrupt
+    puts "\nSearch cancelled."
+    exit 0
+  rescue => e
+    puts "Error: #{e.message}"
+    puts e.backtrace if options[:verbose]
+    exit 1
+  end
 end

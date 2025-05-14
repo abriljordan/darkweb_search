@@ -1,6 +1,0 @@
-Haystak Search Results
-Query: test query
-Timestamp: 2025-04-30 16:47:08 +0800
---------------------------------------------------
-
-No results found.

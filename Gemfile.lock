@@ -12,18 +12,16 @@ GEM
       bigdecimal
       rexml
     diff-lcs (1.6.2)
-    ferrum (0.16)
-      addressable (~> 2.5)
-      base64 (~> 0.2)
-      concurrent-ruby (~> 1.1)
-      webrick (~> 1.7)
-      websocket-driver (~> 0.7)
     hashdiff (1.1.2)
+    httpclient (2.9.0)
+      mutex_m
     json (2.12.0)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
+    logger (1.5.3)
     method_source (1.1.0)
     minitest (5.25.5)
+    mutex_m (0.3.0)
     nokogiri (1.18.8-aarch64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.18.8-aarch64-linux-musl)
@@ -86,17 +84,13 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
+    uri (0.12.4)
     vcr (6.3.1)
       base64
     webmock (3.25.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    webrick (1.9.1)
-    websocket-driver (0.7.7)
-      base64
-      websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.5)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -110,7 +104,8 @@ PLATFORMS
 
 DEPENDENCIES
   concurrent-ruby (~> 1.2)
-  ferrum (~> 0.13)
+  httpclient (~> 2.8)
+  logger (~> 1.5.3)
   minitest
   nokogiri (~> 1.15)
   pry
@@ -118,6 +113,7 @@ DEPENDENCIES
   rspec (~> 3.12)
   rubocop (~> 1.50)
   socksify (~> 1.7)
+  uri (~> 0.12.1)
   vcr (~> 6.1)
   webmock (~> 3.18)
 

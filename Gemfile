@@ -1,14 +1,16 @@
 source 'https://rubygems.org'
 
 # Core dependencies
-gem 'ferrum', '~> 0.13'       # Headless Chrome Ruby API
 gem 'socksify', '~> 1.7'      # SOCKS proxy support
 gem 'nokogiri', '~> 1.15'     # HTML parsing
 gem 'concurrent-ruby', '~> 1.2' # Concurrent programming primitives
+gem 'httpclient', '~> 2.8'     # HTTP client with SOCKS support
 
 # Optional but recommended
 gem 'pry'              # For debugging
 gem 'rake'             # For task automation
+gem 'logger', '~> 1.5.3'     # Logging support
+gem 'uri', '~> 0.12.1'       # URI handling
 
 group :development, :test do
   gem 'rspec', '~> 3.12'      # Testing framework

@@ -13,19 +13,19 @@ def test_cli_mode
   test_cases = [
     {
       desc: "Single engine search (Ahmia)",
-      cmd: "./darkweb_search.rb -q 'test query' -e ahmia"
+      cmd: "./darkweb_search.rb -q 'password AND gmail' -e ahmia"
     },
     {
       desc: "Multiple engines search",
-      cmd: "./darkweb_search.rb -q 'test query' -e ahmia,torch"
+      cmd: "./darkweb_search.rb -q 'password AND gmail' -e ahmia,torch"
     },
     {
       desc: "Search with Tor enabled",
-      cmd: "./darkweb_search.rb -q 'test query' -e ahmia -t"
+      cmd: "./darkweb_search.rb -q 'password AND gmail' -e ahmia -t"
     },
     {
       desc: "Search with output file",
-      cmd: "./darkweb_search.rb -q 'test query' -e ahmia -o test_results.txt"
+      cmd: "./darkweb_search.rb -q 'password AND gmail' -e ahmia -o test_results.txt"
     }
   ]
 
@@ -84,7 +84,7 @@ def test_individual_engines
   end
 
   # Test query
-  query = "test query"
+  query = "password AND gmail"
   puts "\nUsing test query: '#{query}'"
 
   # Test each engine individually
@@ -98,9 +98,9 @@ def test_interactive_mode
   puts "\n=== Testing Interactive Mode ==="
   puts "=" * 50
   
-  cmd = "echo '1\ntest query\n2\n1\n6\n0\n' | ./darkweb_search.rb"
+  cmd = "echo '1\npassword AND gmail\n2\n1\n6\n0\n' | ./darkweb_search.rb"
   puts "Simulating interactive input sequence:"
-  puts "1. Set search query to 'test query'"
+  puts "1. Set search query to 'password AND gmail'"
   puts "2. Select search engine (Ahmia)"
   puts "6. Start search"
   puts "0. Exit"
